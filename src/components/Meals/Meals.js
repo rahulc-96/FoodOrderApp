@@ -1,6 +1,8 @@
 import styles from "./Meals.module.css";
 import React, { Fragment } from "react";
 import MealsSummary from "./MealsSummary";
+import MealItem from "./MealItem";
+import Card from "../UI/Card";
 
 const DUMMY_MEALS = [
   {
@@ -30,14 +32,22 @@ const DUMMY_MEALS = [
 ];
 
 const Meals = () => {
-  const mealsList = DUMMY_MEALS.map((meal) => <li>{meal.name}</li>);
+  const mealsList = DUMMY_MEALS.map((meal) => (
+    <MealItem
+      key={meal.id}
+      id={meal.id}
+      description={meal.description}
+      price={meal.price}
+      title={meal.name}
+    />
+  ));
 
   return (
     <Fragment>
       <MealsSummary />
-      <div className = {styles.meals}>
+      <Card className={styles.meals}>
         <ul>{mealsList}</ul>
-      </div>
+      </Card>
     </Fragment>
   );
 };
