@@ -16,7 +16,6 @@ const CartButton = (props) => {
     const timer = setTimeout( () => setIsButtonHighlighted(false), 300);
     return () => {clearTimeout(timer)};
   }, [items])
-  console.log(classes)
   return (
     <button onClick={props.onShowCart} className={classes}>
       <span className={styles.icon}>

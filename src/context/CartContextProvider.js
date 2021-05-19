@@ -35,7 +35,9 @@ const CartContextProvider = (props) => {
       } else {
         updatedItemsList = prevState.items.concat(action.item);
       }
-      return { items: updatedItemsList, totalAmount: updatedTotalAmount };
+      const normalizedAmount = parseFloat(updatedTotalAmount.toFixed(2))
+      console.log(normalizedAmount);
+      return { items: updatedItemsList, totalAmount: normalizedAmount};
     }
 
     if (action.type === "REMOVE ITEM") {
@@ -58,7 +60,9 @@ const CartContextProvider = (props) => {
         updatedItemsList = [...prevState.items];
         updatedItemsList[existingItemIndex] = updatedItem;
       }
-      return { items: updatedItemsList, totalAmount: updatedTotalAmount };
+      const normalizedAmount = parseFloat(updatedTotalAmount.toFixed(2))
+      console.log(normalizedAmount);
+      return { items: updatedItemsList, totalAmount: normalizedAmount };
     }
     return defaultState;
   };
