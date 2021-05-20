@@ -36,7 +36,6 @@ const CartContextProvider = (props) => {
         updatedItemsList = prevState.items.concat(action.item);
       }
       const normalizedAmount = parseFloat(updatedTotalAmount.toFixed(2))
-      console.log(normalizedAmount);
       return { items: updatedItemsList, totalAmount: normalizedAmount};
     }
 
@@ -61,7 +60,6 @@ const CartContextProvider = (props) => {
         updatedItemsList[existingItemIndex] = updatedItem;
       }
       const normalizedAmount = parseFloat(updatedTotalAmount.toFixed(2))
-      console.log(normalizedAmount);
       return { items: updatedItemsList, totalAmount: normalizedAmount };
     }
     return defaultState;

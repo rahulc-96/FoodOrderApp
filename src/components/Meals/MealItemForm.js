@@ -4,21 +4,11 @@ import Input from "../UI/Input";
 
 const MealItemForm = React.forwardRef((props, ref) => {
   const inputRef = useRef();
-  const [isAmountValid, setIsAmountValid] = useState(true);
 
   const submitHandler = (event) => {
     event.preventDefault();
     const enteredAmount = inputRef.current.value.trim();
     const enteredAmountValue = +enteredAmount;
-    if (
-      enteredAmountValue <= 0 ||
-      enteredAmountValue > 5 ||
-      enteredAmount.length < 0
-    ) {
-      setIsAmountValid(false);
-      return;
-    }
-    setIsAmountValid(true);
     props.onUpdateQuantity(enteredAmountValue);
   };
 
@@ -37,7 +27,6 @@ const MealItemForm = React.forwardRef((props, ref) => {
         }}
       />
       <button>Add Item</button>
-      {!isAmountValid && <p>Please Add Valid Quantity</p>}
     </form>
   );
 });
