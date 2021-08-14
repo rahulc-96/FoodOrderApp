@@ -5,6 +5,7 @@ const useHttpClient = () => {
   const [isError, setIsError] = useState(null);
 
   const sendRequest = useCallback(async (request, apply) => {
+    setIsError(false);
     setIsLoading(true);
     try {
       const response = await fetch(request.url, {

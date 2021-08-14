@@ -35,8 +35,8 @@ const CartContextProvider = (props) => {
       } else {
         updatedItemsList = prevState.items.concat(action.item);
       }
-      const normalizedAmount = parseFloat(updatedTotalAmount.toFixed(2))
-      return { items: updatedItemsList, totalAmount: normalizedAmount};
+      const normalizedAmount = parseFloat(updatedTotalAmount.toFixed(2));
+      return { items: updatedItemsList, totalAmount: normalizedAmount };
     }
 
     if (action.type === "REMOVE ITEM") {
@@ -59,8 +59,12 @@ const CartContextProvider = (props) => {
         updatedItemsList = [...prevState.items];
         updatedItemsList[existingItemIndex] = updatedItem;
       }
-      const normalizedAmount = parseFloat(updatedTotalAmount.toFixed(2))
+      const normalizedAmount = parseFloat(updatedTotalAmount.toFixed(2));
       return { items: updatedItemsList, totalAmount: normalizedAmount };
+    }
+
+    if (action.type === "CLEAR") {
+      return defaultState;
     }
     return defaultState;
   };
@@ -70,11 +74,16 @@ const CartContextProvider = (props) => {
   const addItemHandler = (item) => {
     cartDispatcher({ type: "ADD ITEM", item: item });
   };
+
+  const clearCartHandler = () => {
+    cartDispatcher({ type: "CLEAR", item: null });
+  };
   const contextValue = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
     addItem: addItemHandler,
     removeItem: removeItemHandler,
+    clearCart: clearCartHandler,
   };
 
   return (
